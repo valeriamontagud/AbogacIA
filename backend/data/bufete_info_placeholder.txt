@@ -1,0 +1,29 @@
+# Información del Bufete de Abogados
+
+[Añade aquí la información de tu bufete]
+
+- Nombre del bufete
+- Dirección
+- Teléfono
+- Email
+- Áreas de especialidad
+- Profesionales
+- Experiencia
+- Valores y principios
+
+## Ejemplo de información que podrías añadir:
+
+Bufete Abogados XYZ
+Dirección: Calle Principal 123, Madrid
+Teléfono: +34 912 345 678
+Email: info@bufeteabogados.es
+
+Especialidades:
+- Derecho Civil
+- Derecho Mercantil
+- Derecho Laboral
+- Derecho Administrativo
+
+Equipo:
+- Dra. María García - Abogada Especialista en Derecho Civil
+- Dr. Juan López - Abogado Especialista en Derecho Laboral

@@ -1,0 +1,26 @@
+# Ejemplos de Correos del Bufete
+
+[Añade aquí ejemplos de correos que usas regularmente]
+
+## Correo de Seguimiento
+
+Asunto: Seguimiento de su caso - Caso #XXX
+
+Estimado cliente,
+
+Quería actualizar sobre el estado de su caso. Hemos avanzado en...
+
+Cordialmente,
+[Firma del bufete]
+
+## Correo de Confirmación
+
+Asunto: Confirmación de recepción de documentos
+
+Le confirmamos que hemos recibido los documentos que nos envió...
+
+## Correo de Citación
+
+Asunto: Citación para comparecencia
+
+Le citamos para que se presente en las oficinas del bufete...

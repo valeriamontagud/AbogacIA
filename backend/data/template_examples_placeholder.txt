@@ -1,0 +1,46 @@
+# Ejemplos de Plantillas del Bufete
+
+[Añade aquí ejemplos de plantillas que usas regularmente]
+
+## Plantilla: Aceptación de Pago
+
+Asunto: Aceptación de oferta de pago
+Fecha: [FECHA]
+
+Estimado [CLIENTE],
+
+Por este medio le comunicamos que esta Entidad acepta su oferta de pago por la cantidad de [IMPORTE] euros en relación con los hechos acontecidos el [FECHA_SINIESTRO].
+
+Esta aceptación está condicionada al no surgimiento de nueva información.
+
+Cordialmente,
+[Firma del bufete]
+
+## Plantilla: Demanda
+
+DEMANDA CIVIL
+
+Demandante: [NOMBRE CLIENTE]
+Demandado: [NOMBRE DEMANDADO]
+Cuantía: [CANTIDAD]
+
+HECHOS:
+1. [Describa los hechos]
+
+FUNDAMENTOS DE DERECHO:
+1. [Cite los fundamentos legales]
+
+Petitorio:
+Que se condene al demandado...
+
+## Plantilla: Carta de Reclamación
+
+[Fecha]
+
+[Destinatario]
+
+Asunto: Reclamación por [MOTIVO]
+
+Estimado [NOMBRE],
+
+Por medio de este escrito le hacemos formal reclamación por...
