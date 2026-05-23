@@ -17,7 +17,7 @@ docker compose up --build
 ```
 
 Esto crea y arranca tres servicios:
-- `backend` con FastAPI en `http://localhost:8000`
+- `backend` con FastAPI en `http://localhost:8001`
 - `postgres` en el puerto `5432`
 - `redis` en el puerto `6379`
 
@@ -60,7 +60,7 @@ cd c:\Users\usuario\Desktop\AbogacIA\AbogacIA\backend
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
 ```
 
 ## Comprobación rápida
@@ -68,7 +68,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 Abre en tu navegador:
 
 ```text
-http://localhost:8000/
+http://localhost:8001/
 ```
 
 Deberías ver una respuesta JSON con el mensaje de la aplicación.
