@@ -20,7 +20,7 @@ from app.modules.auth.schemas import (
 )
 
 from app.modules.auth.service import AuthService
-
+from fastapi.security import OAuth2PasswordRequestForm
 
 # =========================================================
 # Router config
@@ -69,7 +69,7 @@ def register(
     response_model=TokenResponse
 )
 def login(
-    data: LoginRequest,
+    form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
     """
@@ -79,8 +79,8 @@ def login(
 
     return auth_service.login(
         db,
-        data.email,
-        data.password
+        form_data.username,
+        form_data.password
     )
 
 
