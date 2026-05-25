@@ -1,9 +1,17 @@
+import { DashboardLayout } from "@/layouts/dashboard-layout";
+
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-black text-white">
-      <h1 className="text-5xl font-bold">
-        AbogacIA
-      </h1>
-    </main>
+    <DashboardLayout>
+      <div>
+        <h1 className="text-4xl font-bold">
+          Dashboard
+        </h1>
+
+        <p className="mt-2 text-zinc-600">
+          Bienvenido a AbogacIA
+        </p>
+      </div>
+    </DashboardLayout>
   );
 }
