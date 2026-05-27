@@ -19,6 +19,9 @@ from app.modules.auth.schemas import (
     TokenResponse
 )
 
+from app.modules.auth.roles import (
+    require_role
+)
 from app.modules.auth.service import AuthService
 from fastapi.security import OAuth2PasswordRequestForm
 
@@ -101,4 +104,15 @@ def get_me(
         "id": str(current_user.id),
         "email": current_user.email,
         "full_name": current_user.full_name
+    }
+
+@router.get("/admin-test")
+def admin_test(
+    current_user: User = Depends(
+        require_role("admin")
+    )
+):
+
+    return {
+        "message": "Admin access granted"
     }

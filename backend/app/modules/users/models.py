@@ -31,3 +31,13 @@ class User(Base):
         String,
         nullable=False
     )
+
+    # =====================================================
+    # Rol usuario
+    # =====================================================
+
+    role = Column(
+        String,
+        default="lawyer",
+        nullable=False
+    )

@@ -21,7 +21,7 @@ class UserRepository:
         self,
         db: Session,
         email: str
-    ):
+    ) -> User | None:
 
         return (
             db.query(User)
@@ -37,7 +37,7 @@ class UserRepository:
         self,
         db: Session,
         user_data: dict
-    ):
+    ) -> User:
 
         user = User(**user_data)
 

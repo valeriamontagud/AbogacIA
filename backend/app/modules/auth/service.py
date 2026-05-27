@@ -12,6 +12,10 @@ from sqlalchemy.orm import Session
 
 from app.modules.users.repository import UserRepository
 
+from app.shared.logger.audit import (
+    audit_log
+)
+
 from app.shared.security.hashing import (
     hash_password,
     verify_password
@@ -19,6 +23,11 @@ from app.shared.security.hashing import (
 
 from app.shared.security.jwt import (
     create_access_token
+)
+
+from app.shared.exceptions.exceptions import (
+    UnauthorizedException,
+    BadRequestException
 )
 
 from app.modules.users.models import User
@@ -55,16 +64,13 @@ class AuthService:
 
         if existing_user:
 
-            raise HTTPException(
-                status_code=400,
-                detail="Email already registered"
+            raise BadRequestException(
+                "User already exists"
             )
 
         # ---------------------------------------------------------
         # Hash password
         # ---------------------------------------------------------
-        print(password)
-        print(type(password))
         hashed_password = hash_password(password)
 
         # ---------------------------------------------------------
@@ -79,7 +85,12 @@ class AuthService:
                 "hashed_password": hashed_password
             }
         )
-
+        audit_log(
+            action="user_registered",
+            user_id=str(user.id),
+            entity="user",
+            entity_id=str(user.id)
+        )
         return user
 
     # ---------------------------------------------------------
@@ -104,9 +115,8 @@ class AuthService:
 
         if not user:
 
-            raise HTTPException(
-                status_code=401,
-                detail="Invalid credentials"
+            raise UnauthorizedException(
+                "Invalid credentials"
             )
 
         # ---------------------------------------------------------
@@ -120,9 +130,8 @@ class AuthService:
 
         if not is_valid:
 
-            raise HTTPException(
-                status_code=401,
-                detail="Invalid credentials"
+            raise UnauthorizedException(
+                "Invalid credentials"
             )
 
         # ---------------------------------------------------------
@@ -131,10 +140,17 @@ class AuthService:
 
         access_token = create_access_token(
             {
-                "sub": str(user.id)
+                "sub": str(user.id),
+                "role": user.role
             }
         )
-
+        audit_log(
+            action="user_login",
+            user_id=str(user.id),
+            entity="user",
+            entity_id=str(user.id)
+        )
+        
         return {
             "access_token": access_token
         }
