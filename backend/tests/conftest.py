@@ -5,6 +5,7 @@ Usa SQLite en memoria y sobrescribe la dependencia de FastAPI para no tocar la D
 """
 
 import os
+import pytest
 
 # Establecer variables de entorno necesarias antes de importar la aplicación.
 os.environ.setdefault("APP_NAME", "AbogacIA")
@@ -58,7 +59,6 @@ def override_get_db():
 app.dependency_overrides[get_db_dependency] = override_get_db
 
 
-def client():
 @pytest.fixture(scope="session")
 def client():
     """Cliente HTTP de pruebas para llamar endpoints de la app."""
@@ -66,7 +66,6 @@ def client():
     return TestClient(app)
 
 
-def db():
 @pytest.fixture(scope="function")
 def db():
     """Session transaccional para pruebas de base de datos.
@@ -85,7 +84,6 @@ def db():
         connection.close()
 
 
-def clear_users(db):
 @pytest.fixture(autouse=True)
 def clear_users(db):
     """Borra todos los usuarios antes de cada prueba para evitar efectos secundarios."""

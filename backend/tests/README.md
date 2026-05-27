@@ -46,8 +46,11 @@ Si no están instaladas, ejecuta desde `backend`:
 Desde la carpeta `backend` en PowerShell:
 
 ```powershell
-& "c:/Users/usuario/Desktop/AbogacIA/AbogacIA/venv/Scripts/python.exe" -m pytest tests
+Set-Location 'c:\Users\usuario\Desktop\AbogacIA\AbogacIA\backend'
+& '..\venv\Scripts\python.exe' -m pytest tests -q
 ```
+
+> Nota: hay una advertencia conocida de `pythonjsonlogger` que no afecta al resultado de los tests. Se ha añadido `backend/pytest.ini` para silenciarla.
 
 ## Qué debe salir
 

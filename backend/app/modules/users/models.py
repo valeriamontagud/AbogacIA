@@ -1,8 +1,6 @@
 import uuid
 
 from sqlalchemy import Column, String
-from sqlalchemy.dialects.postgresql import UUID
-
 from app.database.base import Base
 
 
@@ -10,10 +8,11 @@ class User(Base):
 
     __tablename__ = "users"
 
+    # Usar String genérico para compatibilidad con SQLite en pruebas.
     id = Column(
-        UUID(as_uuid=True),
+        String(36),
         primary_key=True,
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
 
     email = Column(
