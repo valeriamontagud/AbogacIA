@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.config.settings import settings
 from app.shared.logger.logger import setup_logging
-from backend.app.shared.middleware.middleware import LoggingMiddleware
+from app.shared.middleware.middleware import LoggingMiddleware
 from app.modules.auth.router import router as auth_router
 
 from app.shared.exceptions.exceptions import AppException
