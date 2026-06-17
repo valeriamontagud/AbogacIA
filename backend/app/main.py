@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.config.settings import settings
 from app.shared.logger.logger import setup_logging
 from app.shared.middleware.middleware import LoggingMiddleware
@@ -23,6 +25,20 @@ app = FastAPI(
 )
 
 # =========================================================
+# CORS
+# =========================================================
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# =========================================================
 # Exception handlers
 # =========================================================
 
@@ -39,7 +55,7 @@ app.add_exception_handler(
 #app.add_middleware(LoggingMiddleware)
 
 app.include_router(auth_router)
-app.include_router(health_router) #Para comprobar que la aplicación y la base de datos funcionan correctamente
+app.include_router(health_router)
 
 @app.get("/")
 def root():
