@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Uuid
 from app.database.base import Base
 
 
@@ -8,9 +8,8 @@ class User(Base):
 
     __tablename__ = "users"
 
-    # Usar String genérico para compatibilidad con SQLite en pruebas.
     id = Column(
-        String(36),
+        Uuid(as_uuid=False),
         primary_key=True,
         default=lambda: str(uuid.uuid4())
     )

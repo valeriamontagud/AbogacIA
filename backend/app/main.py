@@ -5,6 +5,7 @@ from app.config.settings import settings
 from app.shared.logger.logger import setup_logging
 from app.shared.middleware.middleware import LoggingMiddleware
 from app.modules.auth.router import router as auth_router
+from app.modules.clients.router import router as clients_router
 
 from app.shared.exceptions.exceptions import AppException
 
@@ -55,6 +56,7 @@ app.add_exception_handler(
 #app.add_middleware(LoggingMiddleware)
 
 app.include_router(auth_router)
+app.include_router(clients_router)
 app.include_router(health_router)
 
 @app.get("/")

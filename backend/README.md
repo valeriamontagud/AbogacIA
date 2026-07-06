@@ -79,3 +79,42 @@ Deberías ver una respuesta JSON con el mensaje de la aplicación.
 - El backend carga configuración desde `backend/app/config/settings.py`.
 - Si `.env` ya estaba en Git, usa `git rm --cached backend/.env` para dejar de seguirlo.
 - `backend/.env` y los entornos virtuales `venv/` no deben subirse a Git.
+- El usuarios de prueba se llama test@example.com y contraseña 123456
+
+## Como probar el usuario y contraseña 
+- 1. Levantar backend, PostgreSQL y Redis
+
+    cd backend
+    docker compose up --build
+
+    ## Dejar esa ventana abierta.
+- 2. Ejecutar migraciones
+
+    Abrir otro CMD:
+    cd C:\Users\usuario\Desktop\AbogacIA\AbogacIA\backend
+    docker compose exec backend alembic upgrade head
+
+- 3. Comprobar que el backend funciona
+    curl http://localhost:8001/health
+    Debería devolver algo con:
+    "status":"ok"
+
+- 4. Crear usuario de prueba
+
+    curl -X POST http://localhost:8001/auth/register -H "Content-Type: application/json" -d "{\"email\":\"test@example.com\",\"password\":\"123456\",\"full_name\":\"Usuario Test\"}"
+
+- 5. Levantar frontend
+
+    Abrir otro CMD:
+    cd C:\Users\usuario\Desktop\AbogacIA\AbogacIA\frontend
+    npm install
+    npm run dev
+
+- 6. Abrir la app
+    Ir al navegador:
+    http://localhost:3000/login
+    Entrar con:
+    Email: test@example.com
+    Password: 123456
+
+    ## Ahora mismo el login no redirige todavía; para comprobar que funciona hay que abrir la consola del navegador con F12 y ver que aparece el JWT recibido.

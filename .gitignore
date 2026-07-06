@@ -39,3 +39,4 @@ env/
 .venv/
 *.env.local
 *.env.*
+backend/storage/

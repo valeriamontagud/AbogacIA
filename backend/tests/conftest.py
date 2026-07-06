@@ -27,6 +27,7 @@ from sqlalchemy.pool import StaticPool
 
 from app.database.base import Base
 from app.database.session import get_db as get_db_dependency
+from app.modules.clients.models import Client, ClientDocument
 from app.modules.users.models import User
 from app.main import app
 
@@ -85,8 +86,10 @@ def db():
 
 
 @pytest.fixture(autouse=True)
-def clear_users(db):
-    """Borra todos los usuarios antes de cada prueba para evitar efectos secundarios."""
+def clear_data(db):
+    """Borra datos de dominio antes de cada prueba para evitar efectos secundarios."""
 
+    db.query(ClientDocument).delete()
+    db.query(Client).delete()
     db.query(User).delete()
     db.commit()
