@@ -1,37 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { login } from "@/features/auth/api/auth.service";
 
 export function LoginForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-const handleSubmit = async (
-  e: React.FormEvent
-) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  try {
-    const response = await login({
-      email,
-      password,
-    });
+    try {
+      const response = await login({
+        email,
+        password,
+      });
 
-    console.log(
-      "JWT recibido:",
-      response
-    );
-  } catch (error) {
-    console.error(
-      "Error login:",
-      error
-    );
-  }
-};
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("auth_token", response.access_token);
+        window.localStorage.setItem("auth_token_type", response.token_type);
+      }
+
+      router.replace("/");
+    } catch (error) {
+      console.error("Error login:", error);
+    }
+  };
 
   return (
     <form

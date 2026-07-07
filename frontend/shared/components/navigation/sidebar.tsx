@@ -38,8 +38,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-screen w-64 flex-col border-r bg-zinc-950 p-4 text-white">
-      <div className="mb-10">
+    <aside className="fixed left-0 top-0 flex h-screen w-64 flex-col border-r bg-zinc-950 p-4 text-white">      <div className="mb-10">
         <h2 className="text-3xl font-bold">
           AbogacIA
         </h2>
