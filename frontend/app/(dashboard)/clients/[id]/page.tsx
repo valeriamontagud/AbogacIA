@@ -1,5 +1,5 @@
 import { clientsMock } from "@/features/clients/mock/clients.mock";
-import { ClientInfoTab } from "@/features/clients/components/clients-tabs/client-info-tab";
+import { ClientInfoTab } from "@/features/clients/components/client-info/client-info-tab";
 import { ClientDetailContent } from "@/features/clients/components/client-detail/client-detail-content"
 // ======================================================
 // Types

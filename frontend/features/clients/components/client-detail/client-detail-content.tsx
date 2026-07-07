@@ -4,6 +4,12 @@
 // Client Detail Content
 // ======================================================
 
+import { useState } from "react";
+
+import { ClientDetailHeader } from "./client-detail-header";
+import { ClientDetailTabs } from "./client-detail-tabs";
+import { ClientDetailBody } from "./client-detail-body";
+
 interface ClientDetailContentProps {
   client: {
     id: string;
@@ -18,57 +24,20 @@ interface ClientDetailContentProps {
 export function ClientDetailContent({
   client,
 }: ClientDetailContentProps) {
+  const [activeTab, setActiveTab] = useState("info");
+
   return (
     <>
-      {/* ==================================================
-          Header expediente
-      ================================================== */}
+      <ClientDetailHeader client={client} />
 
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold">
-          Expediente {client.caseNumber}
-        </h1>
+      <ClientDetailTabs
+        activeTab={activeTab}
+        onChange={setActiveTab}
+      />
 
-        <p className="mt-2 text-zinc-500">
-          Cliente {client.fullName}
-        </p>
-      </div>
-
-      {/* ==================================================
-          Navegación expediente
-      ================================================== */}
-
-      <div className="border-b">
-        <nav className="flex gap-8">
-          <button className="border-b-2 border-black pb-3 text-sm font-medium">
-            Ficha
-          </button>
-
-          <button className="pb-3 text-sm text-zinc-500">
-            Apertura
-          </button>
-
-          <button className="pb-3 text-sm text-zinc-500">
-            Tramitación
-          </button>
-
-          <button className="pb-3 text-sm text-zinc-500">
-            Judicial
-          </button>
-
-          <button className="pb-3 text-sm text-zinc-500">
-            Contabilidad
-          </button>
-        </nav>
-      </div>
-
-      {/* ==================================================
-          Contenido activo
-      ================================================== */}
-
-      <div className="mt-8">
-        Aquí irá la pestaña activa
-      </div>
+      <ClientDetailBody
+        activeTab={activeTab}
+      />
     </>
   );
 }
