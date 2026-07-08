@@ -1,14 +1,29 @@
-/*Açò son els tipos de datos que utilitzem per a la taula de clients. */
+/*Açò son els tipos de datos que utilitzem per a la taula de clients. Posteriormente añadiremos los otros campos acutalmente solo tenemos estos */
 export interface Client {
+
   id: string;
 
-  fullName: string;
+  full_name: string;
 
-  caseNumber: string;
+  dni: string | null;
 
-  status: string;
+  birth_date: string | null;
 
-  documentsCount: number;
+  accident_date: string | null;
 
-  lastActivity: string;
+  address: string | null;
+
+  phone: string | null;
+
+  email: string | null;
+
+  notes: string | null;
+
+  data_source: string;
+
+  created_by_user_id: string;
+
+  created_at: string;
+
+  updated_at: string;
 }

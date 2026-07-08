@@ -5,30 +5,68 @@ import { useRouter } from "next/navigation";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { login } from "@/features/auth/api/auth.service";
+
+import {
+  login,
+  getCurrentUser,
+} from "@/features/auth/api/auth.service";
+
+import { useAuthStore } from "@/features/auth/store/auth.store";
 
 export function LoginForm() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [email, setEmail] =
+    useState("");
+
+  const [password, setPassword] =
+    useState("");
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
     e.preventDefault();
 
     try {
-      const response = await login({
-        email,
-        password,
-      });
+      setLoading(true);
 
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem("auth_token", response.access_token);
-        window.localStorage.setItem("auth_token_type", response.token_type);
-      }
+      const response =
+        await login({
+          email,
+          password,
+        });
+
+      console.log("LOGIN OK", response);
+
+      const authStore = useAuthStore.getState();
+
+      authStore.setToken(response.access_token);
+
+      console.log("TOKEN EN STORE", useAuthStore.getState().token);
+
+      const user = await getCurrentUser(response.access_token);
+
+      console.log("USER", user);
+
+      authStore.setUser(user);
+
+      console.log("ANTES DEL REDIRECT");
 
       router.replace("/");
+
     } catch (error) {
-      console.error("Error login:", error);
+
+      console.error(
+        "Error login:",
+        error
+      );
+
+    } finally {
+
+      setLoading(false);
     }
   };
 
@@ -58,9 +96,13 @@ export function LoginForm() {
       <Button
         type="submit"
         className="w-full"
+        disabled={loading}
       >
-        Iniciar sesión
+        {loading
+          ? "Iniciando sesión..."
+          : "Iniciar sesión"}
       </Button>
     </form>
   );
 }
+
