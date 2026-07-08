@@ -1,8 +1,13 @@
 
 /* Ací creem la tabla de clientes, el estil i tot això. Agafa els datos de mock */
+"use client";
+
+import { useRouter } from "next/navigation";
 import { clientsMock } from "../mock/clients.mock";
 
 export function ClientsTable() {
+  const router = useRouter();
+
   return (
     <div className="overflow-hidden rounded-xl border bg-white">
       <table className="w-full">
@@ -32,10 +37,13 @@ export function ClientsTable() {
 
         <tbody>
           {clientsMock.map((client) => (
-            <tr
-              key={client.id}
-              className="border-b transition hover:bg-zinc-50"
-            >
+          <tr
+            key={client.id}
+            onClick={() =>
+              router.push(`/clients/${client.id}`)
+            } /* Ací es on fem que quan cliquem a una fila ens porti a la pàgina de detall del client, que encara no hem creat però ja tenim el mock preparat per a això. */
+            className="cursor-pointer border-b transition hover:bg-zinc-50"
+          >
               <td className="px-4 py-4">
                 {client.fullName}
               </td>
