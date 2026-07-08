@@ -118,3 +118,24 @@ Deberías ver una respuesta JSON con el mensaje de la aplicación.
     Password: 123456
 
     ## Ahora mismo el login no redirige todavía; para comprobar que funciona hay que abrir la consola del navegador con F12 y ver que aparece el JWT recibido.
+
+    ## Se ha creado un usuario que se llama lo siguiente para futuras pruebas
+
+{
+  "email": "admin@test.com",
+  "password": "123456",
+  "full_name": "Administrador"
+}
+
+## Se ha creado un cliente que se tiene estas caracteristicas 
+
+{
+  "full_name": "Juan Pérez",
+  "dni": "12345678A",
+  "birth_date": "1990-05-15",
+  "accident_date": "2026-07-01",
+  "address": "Calle Mayor 1",
+  "phone": "600123123",
+  "email": "juan@test.com",
+  "notes": "Cliente de prueba"
+}

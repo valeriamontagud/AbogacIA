@@ -1,9 +1,15 @@
+from app.modules.clients.domain.entities import (
+    Client,
+    ClientDocument,
+)
+
+from app.modules.clients.domain.repositories import (
+    ClientRepository,
+)
+
 from sqlalchemy.orm import Session
 
-from app.modules.clients.models import Client, ClientDocument
-
-
-class ClientRepository:
+class SQLAlchemyClientRepository(ClientRepository):
 
     def create(
         self,
