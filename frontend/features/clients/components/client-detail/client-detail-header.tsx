@@ -1,16 +1,11 @@
+import { ClientDetailView } from "../../types/client.view";
+
 // ======================================================
 // Client Detail Header
 // ======================================================
 
 interface ClientDetailHeaderProps {
-  client: {
-    id: string;
-    fullName: string;
-    caseNumber: string;
-    status: string;
-    documentsCount: number;
-    lastActivity: string;
-  };
+  client: ClientDetailView;
 }
 
 export function ClientDetailHeader({
@@ -18,7 +13,6 @@ export function ClientDetailHeader({
 }: ClientDetailHeaderProps) {
   return (
     <div className="mb-8">
-
       <h1 className="text-4xl font-bold">
         Expediente {client.caseNumber}
       </h1>
@@ -26,7 +20,6 @@ export function ClientDetailHeader({
       <p className="mt-2 text-zinc-500">
         Cliente {client.fullName}
       </p>
-
     </div>
   );
 }

@@ -9,16 +9,10 @@ import { useState } from "react";
 import { ClientDetailHeader } from "./client-detail-header";
 import { ClientDetailTabs } from "./client-detail-tabs";
 import { ClientDetailBody } from "./client-detail-body";
+import { ClientDetailView } from "../../types/client.view";
 
 interface ClientDetailContentProps {
-  client: {
-    id: string;
-    fullName: string;
-    caseNumber: string;
-    status: string;
-    documentsCount: number;
-    lastActivity: string;
-  };
+  client: ClientDetailView;
 }
 
 export function ClientDetailContent({

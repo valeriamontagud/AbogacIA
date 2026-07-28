@@ -1,7 +1,7 @@
 import {DocumentImport} from "@/shared/components/document-import";  
-import { OpeningSummary } from "./opening-summary";
 import { AccidentSection } from "./accident-section";
 import { VehiclesSection } from "./vehicles-section";
+import { AnalysisStatus } from "@/shared/components/ai-analysis/analysis-status";
 
 export function OpeningTab() {
   return (
@@ -22,11 +22,22 @@ export function OpeningTab() {
       />
 
 
+      <AnalysisStatus
+        detected={3}
+        documents={[
+          "Parte amistoso",
+          "Atestado policial",
+          "Permiso de circulación",
+          "Ficha técnica",
+          "Fotografías",
+          "Informe pericial",
+          "Presupuesto / factura",
+        ]}
+      />
+
       <AccidentSection />
 
       <VehiclesSection />
-
-      <OpeningSummary />
 
     </section>
   );

@@ -1,6 +1,6 @@
 import { DocumentImport } from "@/shared/components/document-import";
-import { AnalysisStatusSection } from "./analysis-status-section";
 import { ExtractedDataSection } from "./extracted-data-section";
+import { AnalysisStatus } from "@/shared/components/ai-analysis/analysis-status";
 
 export function ClientInfoTab() {
   return (
@@ -18,7 +18,16 @@ export function ClientInfoTab() {
   ]}
 />
 
-      <AnalysisStatusSection />
+      <AnalysisStatus
+        detected={3}
+        documents={[
+          "DNI",
+          "Certificado digital",
+          "Cuenta bancaria",
+          "Póliza",
+          "Condiciones particulares",
+  ]}
+/>
 
       <ExtractedDataSection />
 

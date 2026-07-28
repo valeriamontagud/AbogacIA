@@ -1,45 +1,49 @@
-import { clientsMock } from "@/features/clients/mock/clients.mock";
-import { ClientInfoTab } from "@/features/clients/components/client-info/client-info-tab";
-import { ClientDetailContent } from "@/features/clients/components/client-detail/client-detail-content"
-// ======================================================
-// Types
-// ======================================================
+"use client";
 
-interface ClientDetailPageProps {
-  params: Promise<{
-    id: string;
-  }>;
-}
+import { useParams } from "next/navigation";
 
-// ======================================================
-// Client Detail Page
-// ======================================================
+import { ClientDetailContent } from "@/features/clients/components/client-detail/client-detail-content";
+import { useClient } from "@/features/clients/hooks/useClient";
 
-export default async function ClientDetailPage({
-  params,
-}: ClientDetailPageProps) {
-  // Obtener ID desde la URL
-  const { id } = await params;
+export default function ClientDetailPage() {
 
-  // Buscar cliente en mock
-  const client = clientsMock.find(
-    (c) => c.id === id
-  );
+  const params = useParams();
 
-  // Cliente no encontrado
-  if (!client) {
+  const id = params.id as string;
+
+  const {
+    client,
+    loading,
+    error,
+  } = useClient(id);
+
+  if (loading) {
     return (
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">
-          Cliente no encontrado
-        </h1>
+      <div className="p-6">
+        Cargando cliente...
       </div>
     );
   }
 
+  if (error) {
     return (
-    <ClientDetailContent
-        client={client}
-    />
+      <div className="p-6 text-red-500">
+        {error}
+      </div>
     );
+  }
+
+  if (!client) {
+    return (
+      <div className="p-6">
+        Cliente no encontrado
+      </div>
+    );
+  }
+
+  return (
+    <ClientDetailContent
+      client={client}
+    />
+  );
 }

@@ -20,29 +20,6 @@ export function AccidentSection() {
       </p>
 
       {/* ==============================================
-          Subida documentación
-      ============================================== */}
-
-      <div className="mt-6 rounded-lg border border-dashed bg-zinc-50 p-6">
-
-        <h3 className="font-medium">
-          Documentación del accidente
-        </h3>
-
-        <p className="mt-2 text-sm text-zinc-500">
-          Sube el atestado, el parte amistoso o cualquier documento relacionado
-          con el accidente para que la IA pueda analizarlo.
-        </p>
-
-        <button
-          className="mt-4 rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-zinc-800"
-        >
-          Subir documentación
-        </button>
-
-      </div>
-
-      {/* ==============================================
           Información detectada
       ============================================== */}
 
